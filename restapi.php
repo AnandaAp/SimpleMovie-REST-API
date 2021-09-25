@@ -53,7 +53,7 @@ require_once "koneksi.php";
    function insert_movie()
       {
          global $connect;   
-         $check = array('id' => '', 'title' => '', 'genre' => '', 'overview' => '');
+         $check = array('id' => '', 'title' => '', 'genre' => '', 'rating' => '');
          $check_match = count(array_intersect_key($_POST, $check));
          if($check_match == count($check)){
          
@@ -61,7 +61,7 @@ require_once "koneksi.php";
                id = '$_POST[id]',
                title = '$_POST[title]',
                genre = '$_POST[genre]',
-               overview = '$_POST[overview]'");
+               rating = '$_POST[rating]'");
                
                if($result)
                {
@@ -92,14 +92,14 @@ require_once "koneksi.php";
          if (!empty($_GET["id"])) {
          $id = $_GET["id"];      
       }   
-         $check = array('title' => '', 'genre' => '', 'overview' => '');
+         $check = array('title' => '', 'genre' => '', 'rating' => '');
          $check_match = count(array_intersect_key($_POST, $check));         
          if($check_match == count($check)){
          
               $result = mysqli_query($connect, "UPDATE movie SET               
                title = '$_POST[title]',
                genre = '$_POST[genre]',
-               overview = '$_POST[overview]' WHERE id = $id");
+               rating = '$_POST[rating]' WHERE id = $id");
          
             if($result)
             {
