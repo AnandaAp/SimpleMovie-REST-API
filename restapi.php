@@ -89,31 +89,31 @@ require_once "koneksi.php";
       {
          global $connect;
          if (!empty($_GET["id"])) {
-         $id = $_GET["id"];      
-      }   
-         $check = array('title' => '', 'genre' => '', 'rating' => '');
-         $check_match = count(array_intersect_key($_POST, $check));         
-         if($check_match == count($check)){
-         
-              $result = mysqli_query($connect, "UPDATE movie SET               
-               title = '$_POST[title]',
-               genre = '$_POST[genre]',
-               rating = '$_POST[rating]' WHERE id = $id");
-         
-            if($result)
-            {
-               $response=array(
-                  'status' => 1,
-                  'message' =>'Update Success'                  
-               );
-            }
-            else
-            {
-               $response=array(
-                  'status' => 0,
-                  'message' =>'Update Failed'                  
-               );
-            }
+            $id = $_GET["id"];      
+            $check = array('title' => '', 'genre' => '', 'rating' => '');
+            $check_match = count(array_intersect_key($_POST, $check));         
+            if($check_match == count($check)){
+            
+               $result = mysqli_query($connect, "UPDATE movie SET               
+                  title = '$_POST[title]',
+                  genre = '$_POST[genre]',
+                  rating = '$_POST[rating]' WHERE id = $id");
+            
+               if($result)
+               {
+                  $response=array(
+                     'status' => 1,
+                     'message' =>'Update Success'                  
+                  );
+               }
+               else
+               {
+                  $response=array(
+                     'status' => 0,
+                     'message' =>'Update Failed'                  
+                  );
+               }
+            }   
          }else{
             $response=array(
                      'status' => 0,
