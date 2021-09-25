@@ -127,7 +127,7 @@ require_once "koneksi.php";
    function delete_movie()
    {
       global $connect;
-      $id = $_GET['id'];
+      $id = $_POST['id'];
       $query = "DELETE FROM movie WHERE id=".$id;
       if(mysqli_query($connect, $query))
       {
