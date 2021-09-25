@@ -88,8 +88,8 @@ require_once "koneksi.php";
    function update_movie()
       {
          global $connect;
-         if (!empty($_POST["id"])) {
-            $id = $_POST["id"];      
+         if (!empty($_GET["id"])) {
+            $id = $_GET["id"];      
             $check = array('title' => '', 'genre' => '', 'rating' => '');
             $check_match = count(array_intersect_key($_POST, $check));         
             if($check_match == count($check)){
