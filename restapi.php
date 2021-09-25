@@ -115,6 +115,7 @@ require_once "koneksi.php";
                }
             }   
          }else{
+            $id = $_POST["id"];
             $response=array(
                      'status' => 0,
                      'message' =>'Wrong Parameter',
