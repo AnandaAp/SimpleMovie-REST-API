@@ -53,12 +53,11 @@ require_once "koneksi.php";
    function insert_movie()
       {
          global $connect;   
-         $check = array('id' => '', 'title' => '', 'genre' => '', 'rating' => '');
+         $check = array('title' => '', 'genre' => '', 'rating' => '');
          $check_match = count(array_intersect_key($_POST, $check));
          if($check_match == count($check)){
          
                $result = mysqli_query($connect, "INSERT INTO movie SET
-               id = '$_POST[id]',
                title = '$_POST[title]',
                genre = '$_POST[genre]',
                rating = '$_POST[rating]'");
