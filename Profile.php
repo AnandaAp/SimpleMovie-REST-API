@@ -6,7 +6,7 @@
     function get_movie()
     {
         global $connect;      
-        $query = $connect->query("SELECT * FROM movie");            
+        $query = $connect->query("SELECT * FROM profile");            
         while($row=mysqli_fetch_object($query))
         {
              $data[] =$row;
