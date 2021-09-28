@@ -130,7 +130,7 @@
         $response = array(
                         'status' => 1,
                         'message' =>'Success',
-                        'data' => $data
+                        'profile' => $data
                     );               
         }else {
             $response=array(
