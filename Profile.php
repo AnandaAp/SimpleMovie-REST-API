@@ -89,8 +89,9 @@
     function upload_picture(){
         $image = $_FILES['file']['tmp_name'];
         $imagename = $_FILES['file']['name'];
-        
-        $file_path = $_SERVER['DOCUMENT_ROOT'] . '/ilist/profiles/pictures';
+        $ipconfig = "http://192.168.1.8";
+        $directory = '/ilist/profiles/pictures';
+        $file_path = $_SERVER['DOCUMENT_ROOT'] . "$directory";
         
         $response = "";
         
@@ -109,7 +110,7 @@
                 $response=array(
                     'status' => 1,
                     'message' =>'Insert Success',
-                    'picture_path' => $file_path. '/' .$imagename
+                    'picture_path' => $ipconfig. '/' .$directory. '/' .$imagename
                 );
             }
         }
