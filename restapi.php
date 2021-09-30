@@ -1,8 +1,8 @@
 <?php
 require_once "koneksi.php";
    if(function_exists($_GET['function'])) {
-      $_GET['function']();
-   }   
+         $_GET['function']();
+      }   
    function get_movie()
    {
       global $connect;      
@@ -89,15 +89,15 @@ require_once "koneksi.php";
       {
          global $connect;
          if (!empty($_GET['id'])) {
-            $id = $_GET["id"];      
+            $id = $_POST["id"];      
             $check = array('title' => '', 'genre' => '', 'rating' => '');
             $check_match = count(array_intersect_key($_POST, $check));         
             if($check_match == count($check)){
             
                $result = mysqli_query($connect, "UPDATE movie SET               
-                  title = '$_POST[title]',
-                  genre = '$_POST[genre]',
-                  rating = '$_POST[rating]' WHERE id = $id");
+                  `title` = '$_POST[title]',
+                  `genre` = '$_POST[genre]',
+                  `rating` = '$_POST[rating]' WHERE id = $id");
             
                if($result)
                {
