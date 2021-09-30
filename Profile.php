@@ -146,14 +146,15 @@
     function edit_password_by_id(){
         global $connect;
         if(!empty($_GET['id'])){
-            $id = $_POST['id'];      
-            $check = array('id' => '','password' => '');
+            $id = $_POST['id'];
+            $email = $_POST['email'];      
+            $check = array('password' => '');
             $check_match = count(array_intersect_key($_POST, $check));         
             if($check_match == count($check)){
         
                $result = mysqli_query($connect, "UPDATE pengguna SET               
                   `Password` = '$_POST[password]'
-                   WHERE id = $id");
+                   WHERE `id` = '$id' and `email` = '$email'");
                if($result)
                {
                   $response=array(
