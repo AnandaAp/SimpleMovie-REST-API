@@ -142,5 +142,47 @@
         } 
         header('Content-Type: application/json');
         echo json_encode($response);
+    }
+    function edit_password_by_id(){
+        global $connect;
+        if(!empty($_GET['id'])){
+            $id = $_POST['id'];      
+            $check = array('id' => '','password' => '');
+            $check_match = count(array_intersect_key($_POST, $check));         
+            if($check_match == count($check)){
+        
+               $result = mysqli_query($connect, "UPDATE pengguna SET               
+                  `Password` = '$_POST[password]'
+                   WHERE id = $id");
+               if($result)
+               {
+                  $response=array(
+                     'status' => 1,
+                     'message' =>'Update Success'                  
+                  );
+               }
+               else
+               {
+                  $response=array(
+                     'status' => 0,
+                     'message' =>'Update Failed'                  
+                  );
+               }
+            }
+        }
+        else{
+            $userID = $_GET['id'];
+            $email = $_GET['email'];
+            $newPassword = $_POST["password"];
+            $response=array(
+                'status' => 0,
+                'message' =>'Wrong Parameter',
+                'id'=> $userID,
+                'email' => $email,
+                'newPassword' => $newPassword
+            );
+        }
+        header('Content-Type: application/json');
+        echo json_encode($response);
     } 
 ?>
