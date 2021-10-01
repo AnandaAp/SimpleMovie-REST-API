@@ -143,7 +143,7 @@
         header('Content-Type: application/json');
         echo json_encode($response);
     }
-    function edit_password_by_id(){
+    function update_password_by_id(){
         global $connect;
         if(!empty($_GET['id'])){
             $id = $_POST['id'];
