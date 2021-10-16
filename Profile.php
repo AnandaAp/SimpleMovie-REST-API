@@ -185,5 +185,29 @@
         }
         header('Content-Type: application/json');
         echo json_encode($response);
+    }
+    function addHardwareID(){
+        global $connect;
+        $hardware = $_POST['hardwareID'];
+        $id = $_POST['id'];
+        $result = mysqli_query($connect, "UPDATE pengguna SET               
+                  `hardwareID` = '$hardware'
+                   WHERE `id` = '$id'");
+            if($result)
+            {
+                $response=array(
+                    'status' => 1,
+                    'message' =>'Update Success'                  
+                );
+            }
+            else
+            {
+                $response=array(
+                    'status' => 0,
+                    'message' =>'Update Failed'                  
+                );
+            }
+        header('Content-Type: application/json');
+        echo json_encode($response);
     } 
 ?>
