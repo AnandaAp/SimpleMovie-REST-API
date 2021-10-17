@@ -129,7 +129,7 @@
         }
         if($data)
         {
-        $response = array(
+            $response = array(
                         'status' => 1,
                         'message' =>'Success',
                         'profile' => $data
@@ -209,5 +209,29 @@
             }
         header('Content-Type: application/json');
         echo json_encode($response);
-    } 
+    }
+    function signInAddHardwareID(){
+        global $connect;
+        $email = $_POST['email'];
+        $hardware = $_POST['hardwareID'];
+        $result = mysqli_query($connect, "UPDATE pengguna SET               
+                  `hardwareID` = '$hardware'
+                   WHERE `email` = '$email'");
+        if($result)
+        {
+            $response=array(
+                'status' => 1,
+                'message' =>'Update Hardware ID Success'                  
+            );
+        }
+        else
+        {
+            $response=array(
+                'status' => 0,
+                'message' =>'Update Hardware ID Failed'                  
+            );
+        }
+        header('Content-Type: application/json');
+        echo json_encode($response);
+    }
 ?>
