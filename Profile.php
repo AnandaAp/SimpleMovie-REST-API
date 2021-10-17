@@ -234,4 +234,29 @@
         header('Content-Type: application/json');
         echo json_encode($response);
     }
+    function signInWithBiometric(){
+        global $connect;
+        $hardware = $_GET['hardwareID'];
+        $query = "SELECT * FROM `pengguna` WHERE hardwareID = '$hardware'";
+        $result = $connect->query($query);
+        while($row = mysqli_fetch_object($result))
+        {
+           $data[] = $row;
+        }
+        if($data)
+        {
+            $response = array(
+                        'status' => 1,
+                        'message' =>'Success',
+                        'profile' => $data
+                    );               
+        }else {
+            $response=array(
+                        'status' => 0,
+                        'message' =>'No Data Found'
+                    );
+        } 
+        header('Content-Type: application/json');
+        echo json_encode($response);
+    }
 ?>
